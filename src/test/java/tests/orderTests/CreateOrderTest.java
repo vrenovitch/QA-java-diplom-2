@@ -3,6 +3,7 @@ package tests.orderTests;
 import data.orderData.OrderApi;
 import data.userData.CreateUser;
 import data.userData.UserApi;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 
@@ -35,6 +36,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Создание заказа с авторизацией и ингредиентами")
+    @Description("Тест проверяет создание заказа с авторизацией и ингредиентами")
     public void createOrderTest() {
         orderApi.getAboutIngredients();
         orderApi.setToken(userApi.getToken());
@@ -51,6 +53,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Создание заказа без авторизацией, с ингредиентами")
+    @Description("Тест проверяет создание заказа без авторизации, с ингредиентами")
     public void createOrderWithoutAuthTest() {
         orderApi.getAboutIngredients();
         orderApi.setToken("");
@@ -66,6 +69,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Создание заказа с авторизацией, без ингредиентов")
+    @Description("Тест проверяет создание заказа с авторизацией, без ингредиентов")
     public void createOrderWithoutIngredientsTest() {
         orderApi.setToken(userApi.getToken());
         Response response = orderApi.createOrderWithoutIngredients();
@@ -77,6 +81,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Создание заказа с авторизацией, c неправильным хешем ингредиентов")
+    @Description("Тест проверяет создание заказа с авторизацией, c неправильным хешем ингредиентов")
     public void createOrderWithFakeIngredientsTest() {
         orderApi.setToken(userApi.getToken());
         Response response = orderApi.createOrderWithFakeIngredients();
@@ -85,6 +90,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Получение всех заказов пользователя")
+    @Description("Тест проверяет получение всех заказов пользователя")
     public void getOrdersTest() {
         orderApi.setToken(userApi.getToken());
         Response response = orderApi.getOrders();
@@ -98,6 +104,7 @@ public class CreateOrderTest {
 
     @Test
     @DisplayName("Получение всех заказов пользователя без авторизации")
+    @Description("Тест проверяет НЕ получение всех заказов пользователя без авторизации")
     public void getOrdersWithoutTokenTest() {
         orderApi.setToken("");
         Response response = orderApi.getOrders();

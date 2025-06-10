@@ -3,6 +3,7 @@ package tests.userTests;
 import data.userData.CreateUser;
 import data.userData.LoginUser;
 import data.userData.UserApi;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.AfterClass;
@@ -36,6 +37,7 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Авторизация пользователя с корректными данными")
+    @Description("Проверяем, что пользователь авторизуется с корректными данными и проверяем ответ")
     public void loginUserTest() {
         LoginUser loginUser = new LoginUser(email, password);
 
@@ -49,6 +51,7 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Авторизация пользователя с некорректными данными")
+    @Description("Проверяем, что пользователь не авторизуется с некорректными данными")
     public void loginUserWithFakeDataTest() {
         LoginUser loginUser = new LoginUser(fakeEmail, fakePassword);
 

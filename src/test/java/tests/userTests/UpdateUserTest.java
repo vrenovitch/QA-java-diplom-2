@@ -2,6 +2,7 @@ package tests.userTests;
 
 import data.userData.CreateUser;
 import data.userData.UserApi;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.AfterClass;
@@ -36,7 +37,8 @@ public class UpdateUserTest {
     }
 
     @Test
-    @DisplayName("Обновление пользователя с авторизацией")
+    @DisplayName("Обновление пользователя")
+    @Description("Обновление пользователя с авторизацией и проверяем ответ")
     public void updateUserTest() {
         CreateUser updateUser = new CreateUser(newEmail, newPassword, newName);
 
@@ -50,6 +52,7 @@ public class UpdateUserTest {
 
     @Test
     @DisplayName("Обновление пользователя без авторизацией")
+    @Description("Обновление пользователя без авторизации и проверяем ответ")
     public void updateUserWithoutAuthTest() {
         CreateUser updateUser = new CreateUser(email, password, name);
 

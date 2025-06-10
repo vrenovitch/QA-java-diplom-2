@@ -2,6 +2,7 @@ package tests.userTests;
 
 import data.userData.CreateUser;
 import data.userData.UserApi;
+import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
@@ -28,7 +29,8 @@ public class CreateUserTest {
     }
 
     @Test
-    @DisplayName("Создание пользователя с рандомными данными и проверка на успешное создание")
+    @DisplayName("Создание пользователя")
+    @Description("Создаем пользователя с рандомными данными и проверяем, что он успешно создан")
     public void createUserTest() {
         CreateUser createUser = new CreateUser(email, password, name);
 
@@ -41,7 +43,8 @@ public class CreateUserTest {
     }
 
     @Test
-    @DisplayName("Создание пользователя с существующим email и проверка на ошибку")
+    @DisplayName("Создание пользователя с существующим email")
+    @Description("Создаем пользователя с существующим email и проверка на ошибку")
     public void createUserWithExistEmailTest() {
         CreateUser createUser = new CreateUser(email, password, name);
 
@@ -55,7 +58,8 @@ public class CreateUserTest {
     }
 
     @Test
-    @DisplayName("Создание пользователя с пустым email и проверка на ошибку")
+    @DisplayName("Создание пользователя с пустым email")
+    @Description("Создаем пользователя с пустым email и проверка на ошибку")
     public void createUserWithEmptyEmailTest() {
         shouldDeleteUser = false;
         CreateUser createUser = new CreateUser("", password, name);
